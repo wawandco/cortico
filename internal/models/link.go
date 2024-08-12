@@ -5,6 +5,7 @@ import (
 	"crypto/sha256"
 	"fmt"
 	"math/big"
+	"net/url"
 	"os"
 	"time"
 
@@ -26,8 +27,22 @@ type LinksService interface {
 	Find(shortUrl string) (Link, error)
 }
 
+func (link *Link) ValidateURL() error {
+	parsedURL, err := url.ParseRequestURI(link.Original)
+	if err != nil {
+		return fmt.Errorf("invalid URL: %w", err)
+	}
+
+	if parsedURL.Scheme == "" || parsedURL.Host == "" {
+		return fmt.Errorf("invalid URL: missing scheme or host")
+	}
+
+	return nil
+}
+
 func (link *Link) GenerateShortLink() error {
-	urlHashBytes := sha256Of(link.Original)
+	seed := fmt.Sprintf("%v%v", link.Original, time.Now().Unix())
+	urlHashBytes := sha256Of(seed)
 	generatedNumber := new(big.Int).SetBytes(urlHashBytes).Uint64()
 	finalString, err := base58Encoded([]byte(fmt.Sprintf("%d", generatedNumber)))
 	if err != nil {

@@ -4,8 +4,10 @@
         <button class="rounded-tr-xl rounded-br-xl bg-cyan-600 text-white px-10 flex items-center text-center h-14 text-lg">Short</button>
     </form>
 
-    <%= if (shortUrl) { %>
-        <p class="bg-slate-100 p-5 mt-5 text-neutral-800 rounded-lg text-center relative">
+    <p class="bg-slate-100 p-5 mt-5 text-neutral-800 rounded-lg text-center relative">
+        <%= if (error) { %>
+            <%= error %>
+        <% } else if (shortUrl) { %>
             <%= shortUrl %>
 
             <svg class="absolute right-4 w-5 top-[30%] cursor-pointer" xmlns="http://www.w3.org/2000/svg"
@@ -18,6 +20,8 @@
             </svg>
 
             <span class="hidden absolute -top-4 -right-1 bg-slate-200 text-slate-700 py-1 px-2 rounded-l-lg rounded-r-lg after:w-2 after:h-2 after:rotate-45 after:absolute pointer-events-none after:-bottom-0.5 after:left-1/2 after:-translate-x-[30%] after:bg-slate-200 text-sm" id="copied">Copied</span>
-        </p>
-    <% } %>
+        <% } else { %>
+            Your short link will appear here
+        <% } %>
+    </p>
 </div>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" class="h-full">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cortico - Not Found</title>
+        
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="<%= assetPath(`/public/application.css`) %>"/>
+
+        <script src="https://unpkg.com/hyperscript.org@0.9.8"></script>
+        <script src="https://unpkg.com/htmx.org@2.0.0"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    </head>
+    <body class="h-full flex flex-col min-h-full justify-center items-center px-5 bg-gray-100">
+        <h1 class="font-['Pacifico'] font-semibold text-4xl text-cyan-600 mb-4">Corti.co</h1>
+        <div class="bg-white rounded-xl p-10">
+            <p class="bg-slate-100 p-5 mt-5 text-neutral-800 rounded-lg text-center relative">
+                The link you are using does not exist or has expired. <br>
+                But that's fine, you can <a href="/" class="text-blue-500">generate a new one</a>!
+            </p>
+        </div>
+    </body>
+</html>

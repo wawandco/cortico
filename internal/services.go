@@ -1,7 +1,7 @@
 package internal
 
 import (
-	links "cortico/internal/home"
+	"cortico/internal/links"
 	"fmt"
 
 	"github.com/leapkit/leapkit/core/server"

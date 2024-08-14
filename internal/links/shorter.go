@@ -3,6 +3,7 @@ package links
 import (
 	"cortico/internal/models"
 	"database/sql"
+	"log/slog"
 	"net/http"
 
 	"github.com/leapkit/core/form"
@@ -15,33 +16,27 @@ func ShortURL(w http.ResponseWriter, r *http.Request) {
 
 	link := models.Link{}
 	if err := form.Decode(r, &link); err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		rw.Set("error", "Internal issue generating the URL, try later.")
+		slog.Error("Error parsing the form", "err", err.Error())
 	}
 
 	if err := link.ValidateURL(); err != nil {
 		rw.Set("error", "Please enter a valid URL")
-
-		err := rw.Render("home/index.html")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-
-		return
+		slog.Error("Error validating the URL", "err", err.Error())
 	}
 
-	// TODO
-	// Expiration time
-
 	if err := link.GenerateShortLink(); err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		rw.Set("error", "Internal issue generating the URL, try later.")
+		slog.Error("Error generating the short URL", "err", err.Error())
 	}
 
 	if err := linkService.Create(&link); err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		rw.Set("error", "Internal issue generating the URL, try later.")
+		slog.Error("Error storing the link", "err", err.Error())
 	}
 
 	rw.Set("shortUrl", link.FullLink())
-	err := rw.Render("home/index.html")
+	err := rw.RenderClean("links/result.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
@@ -54,7 +49,7 @@ func ShortUrlRedirect(w http.ResponseWriter, r *http.Request) {
 
 	link, err := linkService.Find(shortUrl)
 	if err == sql.ErrNoRows {
-		err := rw.RenderClean("home/404.html")
+		err := rw.RenderClean("links/404.html")
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}

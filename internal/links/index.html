@@ -1,0 +1,10 @@
+<div class="bg-white rounded-xl p-10">
+    <form hx-boost="true" hx-post="/short" hx-target="#result" hx-swap="innerHTML"  class="flex items-center">
+        <input type="text" required name="Original" class="px-4 py-5 rounded-tl-xl rounded-bl-xl w-80 h-14 border" placeholder="Enter here the link you want to short">
+        <button class="rounded-tr-xl rounded-br-xl bg-cyan-600 text-white px-10 flex items-center text-center h-14 text-lg">Short</button>
+    </form>
+
+    <div id="result" class="bg-slate-100 p-5 mt-5 text-neutral-800 rounded-lg text-center relative">
+        Your short link will appear here
+    </div>
+</div>

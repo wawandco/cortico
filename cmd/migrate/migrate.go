@@ -23,4 +23,6 @@ func main() {
 	if err != nil {
 		fmt.Println("Error running migrations: ", err)
 	}
+
+	fmt.Println("✅ Migrations ran successfully")
 }

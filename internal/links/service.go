@@ -25,6 +25,6 @@ func (service *service) Create(link *models.Link) error {
 
 func (service *service) Find(shortUrl string) (models.Link, error) {
 	link := models.Link{}
-	err := service.db.Get(&link, `SELECT * FROM links WHERE short = $1 LIMIT 1`, shortUrl)
+	err := service.db.Get(&link, `SELECT * FROM links WHERE short = $1 ORDER BY created_at DESC LIMIT 1`, shortUrl)
 	return link, err
 }

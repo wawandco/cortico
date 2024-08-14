@@ -9,7 +9,7 @@ import (
 func Index(w http.ResponseWriter, r *http.Request) {
 	rw := render.FromCtx(r.Context())
 
-	err := rw.Render("home/index.html")
+	err := rw.Render("links/index.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}

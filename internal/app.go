@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	links "cortico/internal/home"
+	"cortico/internal/links"
 	"cortico/public"
 
 	"github.com/jmoiron/sqlx"

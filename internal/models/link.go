@@ -49,7 +49,7 @@ func (link *Link) GenerateShortLink() error {
 		return err
 	}
 
-	link.Short = finalString[:8]
+	link.Short = finalString[:4]
 	return nil
 }
 

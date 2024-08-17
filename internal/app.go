@@ -14,15 +14,15 @@ import (
 	"github.com/leapkit/leapkit/core/db"
 	"github.com/leapkit/leapkit/core/render"
 	"github.com/leapkit/leapkit/core/server"
-	_ "github.com/mattn/go-sqlite3"
+	_ "github.com/lib/pq"
 )
 
 var (
 	//go:embed **/*.html **/*.html *.html
 	tmpls embed.FS
 
-	DatabaseURL = cmp.Or(os.Getenv("DATABASE_URL"), "./database.db")
-	DriverName  = "sqlite3"
+	DatabaseURL = cmp.Or(os.Getenv("DATABASE_URL"), "postgres://postgres:postgres@localhost:5432/cortico?sslmode=disable")
+	DriverName  = "postgres"
 )
 
 // Server interface exposes the methods

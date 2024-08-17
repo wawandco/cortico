@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Cortico</title>
+        <title>Corty.co</title>
         
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="<%= assetPath(`/public/application.css`) %>"/>
@@ -16,8 +16,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     </head>
-    <body class="h-full flex flex-col min-h-full justify-center items-center px-5 bg-gray-100">
-        <h1 class="font-['Pacifico'] font-semibold text-4xl text-cyan-600 mb-4">Corti.co</h1>
-        <%= yield %>
+    <body class="h-full">
+        <div class="h-full grid place-content-center place-items-center grid-cols-1 p-5 bg-gray-100">
+            <h1 class="font-['Pacifico'] font-semibold text-4xl text-cyan-600 text-center mb-10">Corty.co</h1>
+            <%= yield %>
+        </div>
     </body>
 </html>

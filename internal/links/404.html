@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Cortico - Not Found</title>
+        <title>Corty.co - Not Found</title>
         
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="<%= assetPath(`/public/application.css`) %>"/>
@@ -16,13 +16,16 @@
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     </head>
-    <body class="h-full flex flex-col min-h-full justify-center items-center px-5 bg-gray-100">
-        <h1 class="font-['Pacifico'] font-semibold text-4xl text-cyan-600 mb-4">Corti.co</h1>
-        <div class="bg-white rounded-xl p-10">
-            <p class="bg-slate-100 p-5 mt-5 text-neutral-800 rounded-lg text-center relative">
-                The link you are using does not exist or has expired. <br>
-                But that's fine, you can <a href="/" class="text-blue-500">generate a new one</a>!
-            </p>
+    <body class="h-full">
+        <div class="h-full grid place-content-center place-items-center grid-cols-1 p-5 bg-gray-100">
+            <div class="broken-logo text-4xl font-['Pacifico'] relative text-gray-100 mb-10 before:absolute before:text-cyan-600 after:absolute after:text-cyan-600 after:h-14" data-text="Corty.co">Corty.co</div>
+
+            <div class="bg-white rounded-xl p-6 md:p-10 w-full max-w-xl">
+                <div class="bg-slate-100 p-5 mt-5 text-neutral-800 rounded-lg text-center text-sm md:text-base">
+                    The link you're using doesn't exist<span class="hidden md:inline"> or has expired</span>.<br>
+                    But that's fine, you can <a href="/" class="text-blue-500">generate a new one</a>!
+                </p>
+            </div>
         </div>
     </body>
 </html>

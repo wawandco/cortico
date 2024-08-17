@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/leapkit/leapkit/core/server"
-	_ "github.com/mattn/go-sqlite3"
+	_ "github.com/lib/pq"
 )
 
 // AddServices is a function that will be called by the server

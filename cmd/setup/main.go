@@ -1,7 +1,6 @@
 package main
 
 import (
-	"cmp"
 	"fmt"
 	"os"
 
@@ -14,8 +13,8 @@ import (
 
 	// Load environment variables
 	_ "github.com/leapkit/leapkit/core/tools/envload"
-	// sqlite3 driver
-	_ "github.com/mattn/go-sqlite3"
+	// postgres driver
+	_ "github.com/lib/pq"
 )
 
 func main() {
@@ -32,7 +31,7 @@ func main() {
 	}
 
 	fmt.Println("✅ Tailwind CSS setup successfully")
-	err = db.Create(cmp.Or(os.Getenv("DATABASE_URL"), "database.db?_timeout=5000"))
+	err = db.Create(internal.DatabaseURL)
 	if err != nil {
 		fmt.Println(err)
 
